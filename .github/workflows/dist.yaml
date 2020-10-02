@@ -29,4 +29,4 @@ jobs:
         run: |
           export NODE_ENV=production
           yarn install --frozen-lockfile
-          yarn grunt build --target=build
+          npx grunt@1.0.4 build --target=build
