@@ -25,7 +25,7 @@ You can set them in your `terminal` or change the default values in the [Gruntfi
 - Check out `development` branch (`git checkout development`)
 - Run `yarn install` to install all dependencies
 - Create your own branch `git checkout -b my-awesome-branch`
-- Run frontend in development mode (`grunt serve`)
+- Run frontend in development mode (`npx grunt serve`)
 - Commit your changes to your branch and push it to your fork
 - Create a pull request against the `development` branch
 

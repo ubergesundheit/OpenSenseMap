@@ -15,11 +15,24 @@
     vm.boxScript = '';
     vm.showConfiguration = false;
     vm.showSerialPort = false;
+    vm.soilDigitalPort = 'A';
+    vm.showSoilDigitalPort = false;
+    vm.soundMeterPort = 'B';
+    vm.showSoundMeterPort = false;
+    vm.windSpeedPort = 'C';
+    vm.showWindSpeedPort = false;
     vm.compiling = false;
     vm.wifi = {
       ssid: '',
       password: ''
     };
+    vm.showWifiConfiguration = false;
+    vm.ttn = {
+      devEUI: '',
+      appEUI: '',
+      appKey: ''
+    };
+    vm.showTTNConfiguration = false;
 
     vm.generateScript = generateScript;
     vm.compile = compile;
@@ -31,10 +44,36 @@
     function activate () {
       if (boxData.model.startsWith('homeV2Wifi')) {
         vm.showConfiguration = true;
+        vm.showWifiConfiguration = true;
       }
 
-      if (boxData.model === 'homeV2WifiFeinstaub') {
+      if (boxData.model === 'homeV2WifiFeinstaub' || boxData.sensorsArray.filter(function (s) {
+        return s.title === 'PM10';
+      }).length > 0) {
         vm.showSerialPort = true;
+      }
+
+      if (boxData.model === 'homeV2Lora') {
+        vm.showConfiguration = true;
+        vm.showTTNConfiguration = true;
+      }
+
+      if (boxData.sensorsArray.filter(function (s) {
+        return s.sensorType === 'SMT50';
+      }).length !== 0) {
+        vm.showSoilDigitalPort = true;
+      }
+
+      if (boxData.sensorsArray.filter(function (s) {
+        return s.sensorType === 'SOUNDLEVELMETER';
+      }).length !== 0) {
+        vm.showSoundMeterPort = true;
+      }
+
+      if (boxData.sensorsArray.filter(function (s) {
+        return s.sensorType === 'WINDSPEED';
+      }).length !== 0) {
+        vm.showWindSpeedPort = true;
       }
 
       return getScript();
@@ -49,8 +88,14 @@
     function getScript () {
       return AccountService.getScript(boxData._id, {
         serialPort: vm.serialPort,
+        soilDigitalPort: vm.soilDigitalPort,
+        soundMeterPort: vm.soundMeterPort,
+        windSpeedPort: vm.windSpeedPort,
         ssid: vm.wifi.ssid,
-        password: vm.wifi.password
+        password: vm.wifi.password,
+        devEUI: vm.ttn.devEUI,
+        appEUI: vm.ttn.appEUI,
+        appKey: vm.ttn.appKey
       })
         .then(function (response) {
           vm.boxScript = response;
