@@ -25,10 +25,8 @@ jobs:
 
       # TODO add node_modules caching
 
-      - name: Run 'yarn' to install dependencies
-        run: |
-          yarn install --frozen-lockfile
-
       - name: Build
         run: |
-          NODE_ENV=production yarn build
+          export NODE_ENV=production
+          yarn install --frozen-lockfile
+          yarn grunt build --target=build
