@@ -1,0 +1,34 @@
+name: Build openSenseMap
+
+on:
+  push:
+    branches:
+      - master
+      - development
+      - boweraway
+  pull_request:
+    branches:
+      - master
+      - development
+
+jobs:
+  grunt:
+    name: Build legacy frontend with grunt
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js 8
+        uses: actions/setup-node@v2.1.1
+        with:
+          node-version: 8
+
+      # TODO add node_modules caching
+
+      - name: Run 'yarn' to install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Build
+        run: |
+          NODE_ENV=production yarn build
