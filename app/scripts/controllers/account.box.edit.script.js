@@ -10,7 +10,7 @@
   function EditBoxScriptController (boxData, AccountService) {
     var vm = this;
     vm.box = boxData;
-
+    vm.display_enabled = false;
     vm.serialPort = 'Serial1';
     vm.boxScript = '';
     vm.showConfiguration = false;
@@ -46,7 +46,6 @@
         vm.showConfiguration = true;
         vm.showWifiConfiguration = true;
       }
-
       if (boxData.model === 'homeV2WifiFeinstaub' || boxData.sensorsArray.filter(function (s) {
         return s.title === 'PM10';
       }).length > 0) {
@@ -95,7 +94,8 @@
         password: vm.wifi.password,
         devEUI: vm.ttn.devEUI,
         appEUI: vm.ttn.appEUI,
-        appKey: vm.ttn.appKey
+        appKey: vm.ttn.appKey,
+        display_enabled: vm.display_enabled
       })
         .then(function (response) {
           vm.boxScript = response;

@@ -132,10 +132,10 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@sensebox/eslint-config-sensebox/-/eslint-config-sensebox-1.1.0.tgz#2fec4ec7945f34e7296c619fabd589d722ecd984"
 
-"@sensebox/opensensemap-i18n@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@sensebox/opensensemap-i18n/-/opensensemap-i18n-3.6.0.tgz#dfcf5c80d4e952f47ca16153175bfaec02707a99"
-  integrity sha512-Kqx2SYYnhcGvviDCrbzesJ+MH4QVPDuc9jhqtP47td6E2UpnDzQtZYlpeiDGoMdx27ds0NAdYl5UEus/KQzP7Q==
+"@sensebox/opensensemap-i18n@^3.9.7":
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/@sensebox/opensensemap-i18n/-/opensensemap-i18n-3.9.7.tgz#7fc5cc4ecd45d90d5f98eb24315c8acd9bc91ee1"
+  integrity sha512-mWy4recUUtlwlmpDH3EkBkxFluymxjOtx/9/7yEtaF4zjSrqRH3vv/jd8G7eqfHJSVrHcbLeB4ngTS1w+GvHYA==
 
 "@sinonjs/commons@^1", "@sinonjs/commons@^1.0.2", "@sinonjs/commons@^1.4.0":
   version "1.4.0"
